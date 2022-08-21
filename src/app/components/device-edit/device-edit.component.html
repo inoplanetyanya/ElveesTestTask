@@ -1,0 +1,103 @@
+<div class="device-edit-container">
+  <div class="modal">
+    <div class="top-section">
+      <h1 class="modal-title">Свойства устройства</h1>
+      <div class="device-stats">
+        <p class="device-stat__label">Название</p>
+        <div class="device-stat device-stat__name">
+          <input
+            #deviceEditInput
+            class="input input--name"
+            type="text"
+            value="{{ this._name }}"
+            maxlength="140"
+            (input)="this.nameInputHandler($event)"
+          />
+        </div>
+        <p class="device-stat__label">Тип устройства</p>
+        <div class="device-stat device-stat__type">
+          <select class="select-type"
+            (change)="this.typeSelectChangeHandler($event)"
+          >
+            <option
+              *ngFor="let deviceType of _types; let typeIndex = index"
+              [ngClass]="{
+                hidden: typeIndex == 0
+              }"
+              [value]="deviceType"
+              [selected]="deviceType == this._type"
+            >
+              {{ deviceType }}
+            </option>
+          </select>
+        </div>
+        <p class="device-stat__label">Разрешения</p>
+        <div class="device-stat device-stat__resolutions">
+          <div
+            class="resolution-container"
+            *ngFor="
+              let resolution of this._resolutions;
+              let resolutionIndex = index
+            "
+          >
+            <input
+              #deviceEditInput
+              #resolutionInput
+              class="input-resolution"
+              type="tel"
+              [value]="resolution.width"
+              (input)="this.resolutionInputHandler($event, resolutionIndex, 'width')"
+            /><span> x </span
+            ><input
+              #deviceEditInput
+              #resolutionInput
+              class="input-resolution"
+              type="tel"
+              [value]="resolution.height"
+              (input)="this.resolutionInputHandler($event, resolutionIndex, 'height')"
+            /><button
+              class="button-resolution-select"
+              [disabled]="this._selectedResolutionIndex == resolutionIndex"
+              (click)="this._selectResolutionClickHandler(resolutionIndex)"
+            >
+              {{
+                this._selectedResolutionIndex == resolutionIndex
+                  ? "Выбрано"
+                  : "Выбрать"
+              }}
+            </button>
+            <button
+              class="button-resolution-remove"
+              *ngIf="this._resolutions.length > 1"
+              (click)="this.removeResolutionClickHandler(resolutionIndex)"
+            >
+              Удалить
+            </button>
+          </div>
+        </div>
+      </div>
+      <button
+        class="button-add-resolution"
+        *ngIf="this._resolutions.length < _maxResolutions"
+        (click)="this.addResolutionClickHandler()"
+      >
+        Добавить разрешение
+      </button>
+    </div>
+    <div class="buttons-container">
+      <button
+        [disabled]="!this.allInputsFilled()"
+        class="button button-save"
+        (click)="this._saveClickHandler($event)"
+      >
+        Сохранить
+      </button>
+      <button
+        class="button button-cancel"
+        (click)="this.cancelClickHandler($event)"
+      >
+        Отмена
+      </button>
+    </div>
+  </div>
+</div>

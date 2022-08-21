@@ -1,0 +1,88 @@
+.buttons-container {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.button {
+  margin: 0 40px;
+  height: 40px;
+  width: 300px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.button-add {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.button-remove {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-head__cell {
+  padding: 5px;
+  border: 1px solid black;
+  vertical-align: top;
+}
+
+.table-head__cell--id {
+  cursor: pointer;
+}
+
+.table-head__text {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.table-head__name-input {
+  width: 90%;
+  padding: 5px;
+  text-align: center;
+}
+
+.table-row {
+}
+
+.table-row:nth-child(odd) {
+  background-color: #fff;
+}
+
+.table-row:nth-child(even) {
+  background-color: #eee;
+}
+
+.table-row__cell {
+  border: 1px solid black;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.cell-checkbox {
+  cursor: default;
+}
+
+.select-device-checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+.resolution-container {
+}
+
+.device-resolution {
+}
+
+.device-resolution--selected {
+  text-decoration: underline;
+}
