@@ -82,7 +82,7 @@ export class Device implements IDevice {
   }
 
   public get resolutions(): IResolution[] {
-    return this._resolutions.map(res => ({...res}));
+    return this._resolutions.map((res) => ({ ...res }));
   }
 
   public set resolutions(value: IResolution[]) {
