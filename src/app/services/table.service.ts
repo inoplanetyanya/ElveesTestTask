@@ -10,7 +10,7 @@ export class TableService {
 
   constructor(private api: APIService) {
     let stream = api.getDevicesStream();
-    stream.subscribe((value) =>
+    stream.subscribe((value) => {
       (value as Array<IDevice>).map((device) => {
         this._tableItems.push(
           new Device(
@@ -21,14 +21,12 @@ export class TableService {
             device.selectedResolutionIndex
           )
         );
-      })
-    );
+      });
+    });
   }
 
   public addTableItem(newDevice: Device) {
-    const sortedIds: Array<number> = this._tableItems
-      .map((el) => el.id)
-      .sort();
+    const sortedIds: Array<number> = this._tableItems.map((el) => el.id).sort();
     let newId = sortedIds[sortedIds.length - 1] + 1;
     let prev = 0;
     for (let i = 0; i < sortedIds.length; i++) {

@@ -10,10 +10,22 @@ import { TableService } from 'src/app/services/table.service';
 })
 export class TableComponent implements OnInit {
   _table: Array<Device> = [];
-  _tableSortedASC: Array<Device> = [];
-  _tableSortedDESC: Array<Device> = [];
+  _getTable = (): Array<Device> => this._table;
+  _getTableSortedASC = (): Array<Device> =>
+    [...this._table].sort((a, b) => {
+      if (a.id < b.id) {
+        return -1;
+      }
+      if (a.id > b.id) {
+        return 1;
+      }
+      return 0;
+    });
+  _getTableSortedDESC = (): Array<Device> =>
+    [...this._getTableSortedASC()].reverse();
+
   _sortOrder: number = 0;
-  _tableBySortOrder: Array<Array<Device>> = [];
+  _tableBySortOrder: Array<{ (): Array<Device> }> = [];
   _filterString: string = '';
 
   public rowClickHandler(device: Device) {
@@ -42,39 +54,31 @@ export class TableComponent implements OnInit {
       this._filterString = event.target.value;
     }
     this._tableBySortOrder = [
-      this._table.filter((el) =>
-        el.name.toLowerCase().includes(this._filterString.toLowerCase())
-      ),
-      this._tableSortedASC.filter((el) =>
-        el.name.toLowerCase().includes(this._filterString.toLowerCase())
-      ),
-      this._tableSortedDESC.filter((el) =>
-        el.name.toLowerCase().includes(this._filterString.toLowerCase())
-      ),
+      () =>
+        this._getTable().filter((el) =>
+          el.name.toLowerCase().includes(this._filterString.toLowerCase())
+        ),
+      () =>
+        this._getTableSortedASC().filter((el) =>
+          el.name.toLowerCase().includes(this._filterString.toLowerCase())
+        ),
+      () =>
+        this._getTableSortedDESC().filter((el) =>
+          el.name.toLowerCase().includes(this._filterString.toLowerCase())
+        ),
     ];
   }
 
-  ngOnInit(): void {
-    this._tableBySortOrder = [
-      this._table,
-      this._tableSortedASC,
-      this._tableSortedDESC,
-    ];
-  }
+  ngOnInit(): void {}
   constructor(
     public table: TableService,
     public deviceManagment: DeviceManagmentService
   ) {
     this._table = table.tableItems;
-    this._tableSortedASC = [...this._table].sort((a, b) => {
-      if (a.id < b.id) {
-        return -1;
-      }
-      if (a.id > b.id) {
-        return 1;
-      }
-      return 0;
-    });
-    this._tableSortedDESC = [...this._tableSortedASC].reverse();
+    this._tableBySortOrder = [
+      this._getTable,
+      this._getTableSortedASC,
+      this._getTableSortedDESC,
+    ];
   }
 }

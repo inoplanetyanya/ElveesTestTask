@@ -36,7 +36,7 @@
       <tr
         class="table-row"
         *ngFor="
-          let device of this._tableBySortOrder[this._sortOrder];
+          let device of this._tableBySortOrder[this._sortOrder]();
           let deviceIndex = index
         "
         (click)="this.rowClickHandler(device)"
