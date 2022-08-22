@@ -1,0 +1,76 @@
+{
+  "devices": [
+    {
+      "id": "1",
+      "name": "Наружная",
+      "type": "Стационарная камера",
+      "resolutions": [
+        {
+          "width": 1280,
+          "height": 1024
+        },
+        {
+          "width": 1366,
+          "height": 768
+        }
+      ],
+      "selectedResolutionIndex": 0
+    },
+    {
+      "id": "4",
+      "name": "Столовая",
+      "type": "Поворотная камера",
+      "resolutions": [
+        {
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "selectedResolutionIndex": 1
+    },
+    {
+      "id": "2",
+      "name": "Холл",
+      "type": "Поворотная камера",
+      "resolutions": [
+        {
+          "width": 1366,
+          "height": 768
+        },
+        {
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "selectedResolutionIndex": 0
+    },
+    {
+      "id": "3",
+      "name": "asdf",
+      "type": "Поворотная камера",
+      "resolutions": [
+        {
+          "width": 1,
+          "height": 1
+        }
+      ],
+      "selectedResolutionIndex": 0
+    },
+    {
+      "id": "5",
+      "name": "sd'fl;gks;dfjkgl;",
+      "type": "Поворотная камера",
+      "resolutions": [
+        {
+          "width": 23141,
+          "height": 1341
+        }
+      ],
+      "selectedResolutionIndex": 0
+    }
+  ]
+}
