@@ -48,8 +48,6 @@ export class DeviceEditComponent implements OnInit {
         );
       };
     }, 0);
-
-    console.log(this.allInputsFilled());
   }
 
   public nameInputHandler(event: any) {

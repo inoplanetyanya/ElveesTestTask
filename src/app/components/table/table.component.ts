@@ -35,7 +35,6 @@ export class TableComponent implements OnInit {
     if (this._sortOrder > 2) {
       this._sortOrder = 0;
     }
-    console.log(this._tableBySortOrder[this._sortOrder], this.table.tableItems);
   }
 
   _filterInputHandler(event: any) {
@@ -67,7 +66,6 @@ export class TableComponent implements OnInit {
     public deviceManagment: DeviceManagmentService
   ) {
     this._table = table.tableItems;
-    console.log(this._table);
     this._tableSortedASC = [...this._table].sort((a, b) => {
       if (a.id < b.id) {
         return -1;

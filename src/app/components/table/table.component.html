@@ -1,15 +1,16 @@
 <div class="table-container">
-  <div class="buttons-container">
-    <button class="button button-add" (click)="this.addDeviceClickHandler()">Добавить устройство</button>
-    <!-- <button class="button button-remove">Удалить выбранные</button> -->
+  <div class="button-container">
+    <button class="button button-add" (click)="this.addDeviceClickHandler()">
+      Добавить устройство
+    </button>
   </div>
   <table class="table">
     <thead class="table-head">
       <tr class="table-head__row">
-        <!-- <th class="table-head__cell">
-          <span class="table-head__text">Выбрать</span>
-        </th> -->
-        <th class="table-head__cell table-head__cell--id" (click)="this.idClickHandler()">
+        <th
+          class="table-head__cell table-head__cell--id"
+          (click)="this.idClickHandler()"
+        >
           <span class="table-head__text">ID</span>
         </th>
         <th class="table-head__cell">
@@ -19,7 +20,8 @@
             type="text"
             maxlength="140"
             placeholder="Фильтр"
-            [value]="this._filterString" (input)="_filterInputHandler($event)"
+            [value]="this._filterString"
+            (input)="_filterInputHandler($event)"
           />
         </th>
         <th class="table-head__cell">
@@ -33,10 +35,12 @@
     <tbody class="table-body">
       <tr
         class="table-row"
-        *ngFor="let device of this._tableBySortOrder[this._sortOrder]; let deviceIndex = index"
+        *ngFor="
+          let device of this._tableBySortOrder[this._sortOrder];
+          let deviceIndex = index
+        "
         (click)="this.rowClickHandler(device)"
       >
-        <!-- <td class="table-row__cell cell-checkbox"><input class="select-device-checkbox" type="checkbox"></td> -->
         <td class="table-row__cell">{{ device.id }}</td>
         <td class="table-row__cell">{{ device.name }}</td>
         <td class="table-row__cell">{{ device.type }}</td>

@@ -16,7 +16,8 @@
         </div>
         <p class="device-stat__label">Тип устройства</p>
         <div class="device-stat device-stat__type">
-          <select class="select-type"
+          <select
+            class="select-type"
             (change)="this.typeSelectChangeHandler($event)"
           >
             <option
@@ -46,7 +47,9 @@
               class="input-resolution"
               type="tel"
               [value]="resolution.width"
-              (input)="this.resolutionInputHandler($event, resolutionIndex, 'width')"
+              (input)="
+                this.resolutionInputHandler($event, resolutionIndex, 'width')
+              "
             /><span> x </span
             ><input
               #deviceEditInput
@@ -54,7 +57,9 @@
               class="input-resolution"
               type="tel"
               [value]="resolution.height"
-              (input)="this.resolutionInputHandler($event, resolutionIndex, 'height')"
+              (input)="
+                this.resolutionInputHandler($event, resolutionIndex, 'height')
+              "
             /><button
               class="button-resolution-select"
               [disabled]="this._selectedResolutionIndex == resolutionIndex"
