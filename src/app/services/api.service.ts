@@ -16,6 +16,7 @@ export class APIService {
     const stream$ = ajax.post(this.url, JSON.stringify(device), {
       'content-type': 'application/json',
     });
+    stream$.subscribe(() => {});
   }
 
   updateDevice(device: IDevice) {
@@ -26,6 +27,7 @@ export class APIService {
         'content-type': 'application/json',
       }
     );
+    stream$.subscribe(() => {});
   }
 
   constructor() {}
