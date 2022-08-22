@@ -20,7 +20,7 @@ export class AppComponent {
       editingDevice.resolutions = [...newDeviceStats.resolutions];
       editingDevice.selectedResolutionIndex =
         newDeviceStats.selectedResolutionIndex;
-      if (editingDevice.id.length == 0) {
+      if (editingDevice.id < 0) {
         this.table.addTableItem(editingDevice);
       } else {
         this.api.updateDevice(

@@ -13,13 +13,13 @@ import { Device, DeviceType, IDevice, IResolution } from '../../models/devices';
   styleUrls: ['./device-edit.component.scss'],
 })
 export class DeviceEditComponent implements OnInit {
-  @Input() device: Device = new Device('', '', DeviceType.Unset, []);
+  @Input() device: Device = new Device(-1, '', DeviceType.Unset, []);
   @Input() saveClickHandler: {
     (event: MouseEvent, newDeviceStats: IDevice): any;
   } = () => {};
   @Input() cancelClickHandler: { (event: MouseEvent): any } = () => {};
 
-  _id: string = '';
+  _id: number = -1;
   _name: string = '';
   _type: DeviceType = DeviceType.Unset;
   _types = Object.values(DeviceType);

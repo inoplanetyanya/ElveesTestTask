@@ -22,7 +22,7 @@ export class TableComponent implements OnInit {
 
   public addDeviceClickHandler() {
     this.deviceManagment.device = new Device(
-      '',
+      -1,
       '',
       DeviceType.Unset,
       [{ width: 0, height: 0 }],

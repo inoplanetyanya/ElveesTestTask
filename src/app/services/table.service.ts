@@ -27,7 +27,7 @@ export class TableService {
 
   public addTableItem(newDevice: Device) {
     const sortedIds: Array<number> = this._tableItems
-      .map((el) => Number(el.id))
+      .map((el) => el.id)
       .sort();
     let newId = sortedIds[sortedIds.length - 1] + 1;
     let prev = 0;
@@ -41,7 +41,7 @@ export class TableService {
       }
     }
     if (isNaN(newId)) newId = 0;
-    newDevice.id = newId.toString();
+    newDevice.id = newId;
     this._tableItems.push(newDevice);
     this.api.addDevice(JSON.parse(JSON.stringify(newDevice).replace(/_/g, '')));
   }

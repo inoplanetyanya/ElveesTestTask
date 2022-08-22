@@ -10,7 +10,7 @@ export enum DeviceType {
 }
 
 export interface IDevice {
-  id: string;
+  id: number;
   name: string;
   type: DeviceType;
   resolutions: Array<IResolution>;
@@ -18,14 +18,14 @@ export interface IDevice {
 }
 
 export class Device implements IDevice {
-  private _id: string;
+  private _id: number;
   private _name: string;
   private _type: DeviceType;
   private _resolutions: Array<IResolution>;
   private _selectedResolutionIndex: number;
 
   constructor(
-    id: string,
+    id: number,
     name: string,
     type: DeviceType,
     resolutions: Array<IResolution>,
@@ -57,11 +57,11 @@ export class Device implements IDevice {
     }
   }
 
-  public get id(): string {
+  public get id(): number {
     return this._id;
   }
 
-  public set id(value: string) {
+  public set id(value: number) {
     this._id = value;
   }
 
